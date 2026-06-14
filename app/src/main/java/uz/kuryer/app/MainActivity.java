@@ -165,6 +165,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 swipe.setRefreshing(false);
+                // Ilova ichida ko'rinmasligi kerak bo'lgan elementlarni (havola/URL) yashiramiz
+                String js =
+                    "(function(){try{" +
+                    "var s=document.getElementById('kuryerAppStyle');" +
+                    "if(!s){s=document.createElement('style');s=document.head.appendChild(s);s.id='kuryerAppStyle';" +
+                    "s.innerHTML='" +
+                    " .leaflet-control-attribution{display:none!important;}" +   // xaritadagi havolalar
+                    " a[href^=\"http\"][target=\"_blank\"].raw-link{display:none!important;}" +
+                    "';}" +
+                    "}catch(e){}})();";
+                view.evaluateJavascript(js, null);
             }
         });
 

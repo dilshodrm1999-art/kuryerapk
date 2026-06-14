@@ -3,19 +3,39 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Kuryer/truck belgisi (oddiy) -->
-    <group android:translateX="30" android:translateY="34" android:scaleX="2.2" android:scaleY="2.2">
-        <path
-            android:fillColor="#FFFFFF"
-            android:pathData="M1,3 h11 v8 h-11 z" />
-        <path
-            android:fillColor="#FFFFFF"
-            android:pathData="M12,6 h4 l3,3 v2 h-7 z" />
-        <path
-            android:fillColor="#FFE0D0"
-            android:pathData="M5,11 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
-        <path
-            android:fillColor="#FFE0D0"
-            android:pathData="M15,11 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0" />
-    </group>
+
+    <!-- Tezlik chiziqlari (orange) -->
+    <path android:fillColor="#E8902E" android:pathData="M22,46 h16 a3,3 0 0 1 0,6 h-16 a3,3 0 0 1 0,-6 z" />
+    <path android:fillColor="#E8902E" android:pathData="M26,56 h12 a3,3 0 0 1 0,6 h-12 a3,3 0 0 1 0,-6 z" />
+    <path android:fillColor="#E8902E" android:pathData="M22,66 h16 a3,3 0 0 1 0,6 h-16 a3,3 0 0 1 0,-6 z" />
+
+    <!-- Boshi (navy) -->
+    <path android:fillColor="#1F3A4D" android:pathData="M62,26 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" />
+
+    <!-- Tana va oyoqlar (yuguruvchi, navy) -->
+    <path android:fillColor="#1F3A4D"
+        android:pathData="M58,38
+            C53,40 50,45 49,50
+            L44,66 C43,70 48,72 50,68
+            L55,55
+            L58,62
+            L52,80 C50,85 56,87 58,82
+            L65,64 C66,61 65,58 63,56
+            L60,50
+            L70,52
+            C74,53 78,50 76,46
+            C75,44 73,43 71,43
+            L62,41
+            C61,39 60,38 58,38 Z" />
+
+    <!-- Old oyoq (navy) -->
+    <path android:fillColor="#1F3A4D"
+        android:pathData="M49,52 L40,78 C38,83 44,85 46,80 L55,56 C56,52 51,49 49,52 Z" />
+
+    <!-- Qo'l paketga cho'zilgan (navy) -->
+    <path android:fillColor="#1F3A4D"
+        android:pathData="M63,50 L78,54 C82,55 86,55 86,51 L86,49 C86,46 83,45 80,45 L65,44 C61,43 60,49 63,50 Z" />
+
+    <!-- Paket (orange kvadrat) -->
+    <path android:fillColor="#E8902E" android:pathData="M82,40 h14 a3,3 0 0 1 3,3 v14 a3,3 0 0 1 -3,3 h-14 a3,3 0 0 1 -3,-3 v-14 a3,3 0 0 1 3,-3 z" />
 </vector>
