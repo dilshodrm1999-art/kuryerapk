@@ -25,14 +25,13 @@ jobs:
       - name: Android SDK sozlash
         uses: android-actions/setup-android@v3
 
-      - name: Gradle o'rnatish
+      - name: Gradle o'rnatish (8.9)
         uses: gradle/actions/setup-gradle@v3
-
-      - name: Gradle wrapper yaratish
-        run: gradle wrapper --gradle-version 8.9 --distribution-type bin
+        with:
+          gradle-version: '8.9'
 
       - name: Debug APK build qilish
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: APK'ni nomlash
         run: |
