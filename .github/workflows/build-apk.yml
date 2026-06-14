@@ -1,0 +1,59 @@
+name: Build APK
+
+# APK'ni avtomatik build qiladi. Har push'da va qo'lda ishga tushiriladi.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodni olish
+        uses: actions/checkout@v4
+
+      - name: JDK 17 o'rnatish
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK sozlash
+        uses: android-actions/setup-android@v3
+
+      - name: Gradle o'rnatish
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Gradle wrapper yaratish
+        run: gradle wrapper --gradle-version 8.9 --distribution-type bin
+
+      - name: Debug APK build qilish
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: APK'ni nomlash
+        run: |
+          mkdir -p out
+          cp app/build/outputs/apk/debug/app-debug.apk out/kuryer.apk
+
+      - name: APK'ni artifact sifatida saqlash
+        uses: actions/upload-artifact@v4
+        with:
+          name: kuryer-apk
+          path: out/kuryer.apk
+          if-no-files-found: error
+
+      - name: Release'ga APK joylash (latest)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "Kuryer APK (oxirgi)"
+          files: out/kuryer.apk
+          body: |
+            Kuryer ilovasi — avtomatik build.
+            kuryer.apk faylini yuklab oling va telefoningizga o'rnating.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
